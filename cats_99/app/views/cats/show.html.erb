@@ -1,0 +1,31 @@
+<h1><%= @cat.name %>'s Profile</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th><%= @cat.name %></th>      
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Attributes
+                <ul>
+                    <li>Name: </li>
+                    <li>Birth Date: </li>
+                    <li>Color: </li>
+                    <li>description: </li>
+                    <li>Sex: </li>                 
+                </ul>
+            </td>
+            <td>Value
+                <ul>
+                    <li><%= @cat.name %></li>
+                    <li><%= @cat.birth_date %></li>
+                    <li><%= @cat.color %></li>
+                    <li><%= @cat.description %></li>
+                    <li><%= @cat.sex %></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
