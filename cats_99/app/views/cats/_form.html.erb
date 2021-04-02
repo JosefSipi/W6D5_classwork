@@ -1,0 +1,34 @@
+
+
+
+
+
+
+
+
+<form action="<%= cats_url(cat) %>" method="post">
+
+<label for="cat_name">Cat Name</label>
+<input type="text" name="cat[name]" id="cat_name" value="<%= cat.name %>">
+
+<label for="cat_birth_date">Cat Birthday</label>
+<input type="text" name="cat[birth_date]" id="cat_bith_date" value="<%= cat.birth_date %>">
+
+<label for="cat_color">Cat Color</label>
+
+<select name="cat[color]">
+    <option disabled selected> -- Select a Color --</option>
+    <option value="Red"> Red </option>
+    <option value="Yellow"> Yellow </option>
+    <option value="Black"> Black </option>
+    <option value="White"> White </option>
+    <option value="Gray"> Gray </option>
+</select>
+
+<input type="raido" name="cat[sex]" >
+
+<label for="cat_description"> Description </label>
+<textarea name="cat[description]"> <%= cat.description %> </textarea>
+
+
+</form>
