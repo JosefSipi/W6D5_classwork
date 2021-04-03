@@ -1,34 +1,50 @@
+<h1><%= edit ? 'Edit Your Cat Here' : 'Create A New Cat Here'%></h1>
+
+<% if edit %>
+    <%action = cat_url(cat)%>
+    <%method = 'patch'%>
+<% else %>
+    <%action = cats_url(cat)%>
+    <%method = 'post'%>
+<% end%>
 
 
+<form action="<%= action %>" method="post">
+    <input type="hidden" name="_method" value=<%=method%>>
 
-
-
-
-
-
-<form action="<%= cats_url(cat) %>" method="post">
-
-<label for="cat_name">Cat Name</label>
+<label for="cat_name">Cat Name: </label>
 <input type="text" name="cat[name]" id="cat_name" value="<%= cat.name %>">
 
-<label for="cat_birth_date">Cat Birthday</label>
-<input type="text" name="cat[birth_date]" id="cat_bith_date" value="<%= cat.birth_date %>">
+<div id="sex_options">
+<label for="sex_options"> Sex: </label>
+    
+    <input type="radio" id="sex_choice"
+     name="cat[sex]" value="M" <%= cat.sex == "M" ? "checked" : "" %>>
+    <label for="sex_choice">Male</label>
 
-<label for="cat_color">Cat Color</label>
+    <input type="radio" id="sex_choice2"
+     name="cat[sex]" value="F" <%= cat.sex == "F" ? "checked" : "" %> >
+    <label for="sex_choice2">Female</label>
 
-<select name="cat[color]">
-    <option disabled selected> -- Select a Color --</option>
-    <option value="Red"> Red </option>
-    <option value="Yellow"> Yellow </option>
-    <option value="Black"> Black </option>
-    <option value="White"> White </option>
-    <option value="Gray"> Gray </option>
+</div>
+
+<label for="cat_color">Cat Color: </label>
+<select id="cat_color" name="cat[color]">
+   <option disabled selected> -- Select a Color --</option>
+    <% Cat::COLORS.each do |color| %>
+        <option 
+        <%= cat.color == color ? 'selected' :  "" %>
+        value="<%=color%>"><%=color%></option>
+    <% end%>
 </select>
 
-<input type="raido" name="cat[sex]" >
+<label for="cat_birth_date">Cat Birthday: </label>
+<input type="date" name="cat[birth_date]" id="cat_bith_date" value="<%=cat.birth_date%>">
 
-<label for="cat_description"> Description </label>
-<textarea name="cat[description]"> <%= cat.description %> </textarea>
 
+<label for="cat_description"> Description:  </label>
+<textarea name="cat[description]" id="cat_description"><%= cat.description %></textarea>
+
+<input type="submit" value="<%= edit ? 'Edit Cat' : 'Create Cat'%>">
 
 </form>
